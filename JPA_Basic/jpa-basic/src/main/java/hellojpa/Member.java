@@ -14,6 +14,13 @@ public class Member {
 //    위와 같은 설정으로 column 이름을 username 으로 지정할 수 있다.
     private String name;
 
+    public Member(){}
+
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
