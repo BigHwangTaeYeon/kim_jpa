@@ -12,14 +12,12 @@ public class JpaMain {
         tx.begin();
         // code
         try {
+            Member member = new Member();
+            member.setId(2L);
+            member.setUsername("B");
+            member.setRoleType(RoleType.USER);
+            em.persist(member);
 
-            Member member1 = em.find(Member.class, 150L);
-            Member member2 = em.find(Member.class, 150L);
-            member1.setName("AAAAA");
-
-            em.detach(member1);
-
-            System.out.println("=========================");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
