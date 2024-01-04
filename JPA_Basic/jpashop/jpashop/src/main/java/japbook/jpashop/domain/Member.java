@@ -1,17 +1,11 @@
-package hellojpa;
+package japbook.jpashop.domain;
 
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(
-        name = "MEMBER_SEQ_GENERATOR",
-        sequenceName = "MEMBER_SEQ",
-        initialValue = 1, allocationSize = 50
-)
 public class Member {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "MEMBER_SEQ_GENERATOR")
+    @Id @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
 
     private String name;
@@ -20,7 +14,7 @@ public class Member {
 
     private String street;
 
-    private  String zipcode;
+    private String zipcode;
 
     public Member() {
     }
