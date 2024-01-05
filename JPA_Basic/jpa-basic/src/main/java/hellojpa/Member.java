@@ -3,24 +3,28 @@ package hellojpa;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(
-        name = "MEMBER_SEQ_GENERATOR",
-        sequenceName = "MEMBER_SEQ",
-        initialValue = 1, allocationSize = 50
-)
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,
-    generator = "MEMBER_SEQ_GENERATOR")
+    @GeneratedValue
+    @Column(name="member_id")
     private Long id;
 
+    @Column(name = "username")
     private String name;
 
-    private String city;
+//    @Column(name="team_id")
+//    private Long teamId;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 
-    private String street;
+    public Team getTeam() {
+        return team;
+    }
 
-    private  String zipcode;
+    public void setTeam(Team team) {
+        this.team = team;
+    }
 
     public Member() {
     }
@@ -41,27 +45,4 @@ public class Member {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
 }

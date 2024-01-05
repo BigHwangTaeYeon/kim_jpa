@@ -6,9 +6,10 @@ import java.util.Date;
 @Entity
 @SequenceGenerator(
         name = "ORDER_SEQ_GENERATOR",
-        sequenceName = "ORDER",
+        sequenceName = "ORDERS",
         initialValue = 1, allocationSize = 50
 )
+@Table(name="orders")
 public class Order {
     @Id
     @GeneratedValue(
@@ -21,7 +22,7 @@ public class Order {
 
     private Date orderDate;
 
-    private OrderStatus status;
+//    private OrderStatus status;
 
     public Long getId() {
         return id;
@@ -47,11 +48,11 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
+//    public OrderStatus getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(OrderStatus status) {
+//        this.status = status;
+//    }
 }
