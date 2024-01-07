@@ -16,6 +16,11 @@ public class Team {
     @OneToMany(mappedBy = "team")   //Member Entity의 team 변수명에 맞춰줄 것이다라는 뜻
     private List<Member> members = new ArrayList<>();
 
+    public void addMember(Member member){
+        member.setTeam(this);
+        members.add(member);
+    }
+
     public Team() {
     }
 
@@ -42,4 +47,5 @@ public class Team {
     public void setName(String name) {
         this.name = name;
     }
+
 }

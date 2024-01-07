@@ -21,11 +21,6 @@ public class Member {
     public Team getTeam() {
         return team;
     }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
     public Member() {
     }
 
@@ -43,6 +38,10 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
 }
