@@ -1,26 +1,21 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@SequenceGenerator(
-        name = "ITEM_SEQ_GENERATOR"
-        , sequenceName = "ITEM_SEQ"
-        , initialValue = 1, allocationSize = 50
-)
-public class Item {
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE
-            , generator = "ITEM_SEQ_GENERATOR"
-    )
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn
+public abstract class Item extends BaseEntity {
+    @Id @GeneratedValue
+//    @Column(name = "item_id")
     private Long id;
-
     private String name;
-
     private int price;
-
     private int stockQuantity;
+    @ManyToMany(mappedBy = "items")
+    private List<category> categorys = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -52,5 +47,13 @@ public class Item {
 
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
+    }
+
+    public List<category> getCategorys() {
+        return categorys;
+    }
+
+    public void setCategorys(List<category> categorys) {
+        this.categorys = categorys;
     }
 }
