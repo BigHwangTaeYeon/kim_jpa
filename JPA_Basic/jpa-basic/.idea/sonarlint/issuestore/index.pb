@@ -78,3 +78,7 @@ G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\86
 Q.idea/sonarlint/securityhotspotstore/f/d/fd68fd8c0388b07c61445afa503c8ec018eab4c0,6\4\64bd4ead7c56e517e1f589337ab4471020cb8f38
 A
 ex1-hello-jpa.iml,8\8\881759f341a096fb2db3afa0d6e5ede1098681c0
+R
+"src/main/java/hellojpa/Parent.java,4\4\44edf2283231ef941ed7d9f231ed01b376d49e57
+Q
+!src/main/java/hellojpa/Child.java,4\8\48d6c9fed6f1a2e54a6a3560ffb4d0f8d7b9aa18

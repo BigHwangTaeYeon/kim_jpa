@@ -10,8 +10,8 @@ public class Member extends BaseEntity{
 
     private String userName;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn
     private Team team;
 
     public Member() {
