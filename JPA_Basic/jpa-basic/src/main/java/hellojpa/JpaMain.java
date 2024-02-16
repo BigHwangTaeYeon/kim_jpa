@@ -14,10 +14,14 @@ public class JpaMain {
         // code
         try {
 
+            Adress adress = new Adress("city", "street", "10000");
             Member member = new Member();
             member.setUserName("hello");
-            member.setHomeAdress(new Adress("서울", "도산대로","285"));
-            member.setWorkPeriod(new Period());
+            member.setHomeAdress(adress);
+
+            Member member1 = new Member();
+            member1.setHomeAdress(new Adress("서울", "도산대로","285"));
+            member1.setWorkPeriod(new Period());
 
             em.persist(member);
 
