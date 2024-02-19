@@ -1,2 +1,6 @@
 
-]	java:S125"<This block of commented-out lines of code should be removed.(ÔË×ùÿÿÿÿ8‰ãº¡Ó1
+]	java:S125"<This block of commented-out lines of code should be removed.(Ã´íıÿÿÿÿ8‰ô¬şÛ1
+[
+java:S1128"9Remove this unused import 'japbook.jpashop.domain.Order'.(Å³„µûÿÿÿÿ8‰ô¬şÛ1
+_
+java:S1128"=Remove this unused import 'japbook.jpashop.domain.OrderItem'.(Ã†·õıÿÿÿÿ8Šô¬şÛ1

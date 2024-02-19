@@ -4,14 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d8154b5-2c8b-44f6-ab4a-2dbaed766249" name="Changes" comment="프록시">
+    <list default="true" id="2d8154b5-2c8b-44f6-ab4a-2dbaed766249" name="Changes" comment="불변 객체">
+      <change afterPath="$PROJECT_DIR$/10.객체지향쿼리언어1(JPQL).md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hellojpa/AddressEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jpashop/jpashop/src/main/java/japbook/jpashop/domain/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jpashop/jpashop/src/main/java/japbook/jpashop/domain/Delivery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/3818751ba7a7e2bbfde51b6c3126a02f97f5a644" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/3818751ba7a7e2bbfde51b6c3126a02f97f5a644" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bfbac6fbffe19ced8136bfd2d23bf11518635622" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/f/bfbac6fbffe19ced8136bfd2d23bf11518635622" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd68fd8c0388b07c61445afa503c8ec018eab4c0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/d/fd68fd8c0388b07c61445afa503c8ec018eab4c0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/09.값타입.md" beforeDir="false" afterPath="$PROJECT_DIR$/9.값타입.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.값타입.md" beforeDir="false" afterPath="$PROJECT_DIR$/9.값타입.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Adress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hellojpa/Adress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/JpaMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hellojpa/JpaMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hellojpa/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hellojpa/JpaMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hellojpa/JpaMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hellojpa/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hellojpa/Member.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/issuestore/1/c/1c93a84d00bd2beb7e874fa243b774594d86423b" beforeDir="false" afterPath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/issuestore/1/c/1c93a84d00bd2beb7e874fa243b774594d86423b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/issuestore/a/b/abec06a25d72169c0188b9844ae55c08bfb4b491" beforeDir="false" afterPath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/issuestore/a/b/abec06a25d72169c0188b9844ae55c08bfb4b491" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../jpashop/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/jpashop/src/main/java/japbook/jpashop/JpaMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jpashop/jpashop/src/main/java/japbook/jpashop/JpaMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpashop/jpashop/src/main/java/japbook/jpashop/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jpashop/jpashop/src/main/java/japbook/jpashop/domain/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,13 +129,22 @@
       <option name="project" value="LOCAL" />
       <updated>1707324387414</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="불변 객체">
+      <option name="closed" value="true" />
+      <created>1708091695575</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708091695575</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="연관관계매핑 다대일" />
     <MESSAGE value="연관관계매핑" />
     <MESSAGE value="프록시" />
-    <option name="LAST_COMMIT_MESSAGE" value="프록시" />
+    <MESSAGE value="불변 객체" />
+    <option name="LAST_COMMIT_MESSAGE" value="불변 객체" />
   </component>
 </project>

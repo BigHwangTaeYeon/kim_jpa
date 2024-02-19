@@ -17,3 +17,7 @@ I
 jpashop/pom.xml,c\9\c9d75706c362a56e21f556232905af6e00a73e56
 h
 8jpashop/src/main/java/japbook/jpashop/domain/Member.java,1\c\1c93a84d00bd2beb7e874fa243b774594d86423b
+i
+9jpashop/src/main/java/japbook/jpashop/domain/Address.java,0\4\04611df629c2a1a52f54a7c08e8dd04034833f68
+j
+:jpashop/src/main/java/japbook/jpashop/domain/Delivery.java,2\e\2e7ca40b262f060f7184bec9e74d59025ff9fda8

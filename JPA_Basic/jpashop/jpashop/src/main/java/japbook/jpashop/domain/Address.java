@@ -1,23 +1,31 @@
-package hellojpa;
+package japbook.jpashop.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
 @Embeddable
-public class Adress {
+public class Address {
+    @Column(length = 10)
     private String city;
+    @Column(length = 20)
     private String street;
-    @Column(name = "ZIPCODE")
+    @Column(length = 5)
     private String zipcode;
 
-
-    public Adress() {
+    public String fullAddress() {
+        return getCity() + getStreet() + getZipcode();
     }
 
-    public Adress(String city, String street, String zipcode) {
+    private void setCity(String city) {
         this.city = city;
+    }
+
+    private void setStreet(String street) {
         this.street = street;
+    }
+
+    private void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -25,36 +33,24 @@ public class Adress {
         return city;
     }
 
-    private void setCity(String city) {
-        this.city = city;
-    }
-
     public String getStreet() {
         return street;
-    }
-
-    private void setStreet(String street) {
-        this.street = street;
     }
 
     public String getZipcode() {
         return zipcode;
     }
 
-    private void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Adress adress = (Adress) o;
-        return Objects.equals(city, adress.city) && Objects.equals(street, adress.street) && Objects.equals(zipcode, adress.zipcode);
+        Address address = (Address) o;
+        return Objects.equals(getCity(), address.getCity()) && Objects.equals(getStreet(), address.getStreet()) && Objects.equals(getZipcode(), address.getZipcode());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, street, zipcode);
+        return Objects.hash(getCity(), getStreet(), getZipcode());
     }
 }

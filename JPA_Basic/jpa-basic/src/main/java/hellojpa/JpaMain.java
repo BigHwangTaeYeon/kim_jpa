@@ -3,6 +3,11 @@ package hellojpa;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.List;
+import java.util.Set;
 
 public class JpaMain {
     public static void main(String[] args){
@@ -14,16 +19,13 @@ public class JpaMain {
         // code
         try {
 
-            Adress adress = new Adress("city", "street", "10000");
             Member member = new Member();
-            member.setUserName("hello");
-            member.setHomeAdress(adress);
-
-            Member member1 = new Member();
-            member1.setHomeAdress(new Adress("서울", "도산대로","285"));
-            member1.setWorkPeriod(new Period());
-
+            member.setUserName("HHH");
             em.persist(member);
+
+            // 아직 SQL에 없음 flush를 해야함 / flush -> commit, query 날라갈 때 동작
+
+            List<Member> resultList = em.createNativeQuery("select * from member").getResultList();
 
             tx.commit();
         } catch (Exception e) {

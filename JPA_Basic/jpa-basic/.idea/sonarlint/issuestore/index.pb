@@ -90,3 +90,9 @@ R
 "src/main/java/hellojpa/Adress.java,7\5\75998adcb83fd7d1562de39804c640ed5ecf6f73
 >
 9.값타입.md,c\f\cf10390d1b18d21b7e1cb0ba06e1ab2b4a50000f
+G
+src/test/java/test.java,b\3\b374631c4872ec50fe0586e27a651dfe2594da1e
+Y
+)src/main/java/hellojpa/AddressEntity.java,2\8\288dd2a061bd2aef4a50d3ec6f052bc0991950b2
+U
+%10.객체지향쿼리언어1(JPQL).md,0\0\0032daee4c86ddd54a151d9f1aee80b945ea9d2b

@@ -1,8 +1,10 @@
 package hellojpa;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Member extends BaseEntity{
@@ -13,16 +15,9 @@ public class Member extends BaseEntity{
     @Column(name = "user_name")
     private String userName;
 
-    // 기간 period
-//    private LocalDateTime startDate;
-//    private LocalDateTime endDate;
-    @Embedded
-    private Period workPeriod;
+//    @Embedded
+//    private Period workPeriod;
 
-    // 주소
-//    private String city;
-//    private String street;
-//    private String zipcode;
     @Embedded
     private Adress homeAdress;
 
@@ -34,7 +29,33 @@ public class Member extends BaseEntity{
     )
     private Adress workAdress;
 
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "favorit_food", joinColumns =
+        @JoinColumn(name = "member_id")
+    )
+    @Column(name = "food_name") // 하나이기 때문에 가능
+    private Set<String> favoritFoods = new HashSet<>();
+
+//    @ElementCollection(fetch = FetchType.LAZY)
+//    @CollectionTable(name = "address", joinColumns =
+//        @JoinColumn(name = "member_id")
+//    )
+//    private List<Adress> adressHistory = new ArrayList<>();
+
+    // 1:N
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "member_id")
+    private List<AddressEntity> addressHistory = new ArrayList<>();
+
     public Member() {
+    }
+
+    public List<AddressEntity> getAddressHistory() {
+        return addressHistory;
+    }
+
+    public void setAddressHistory(List<AddressEntity> addressHistory) {
+        this.addressHistory = addressHistory;
     }
 
     public Long getId() {
@@ -53,12 +74,20 @@ public class Member extends BaseEntity{
         this.userName = userName;
     }
 
-    public Period getWorkPeriod() {
-        return workPeriod;
+    public Adress getWorkAdress() {
+        return workAdress;
     }
 
-    public void setWorkPeriod(Period workPeriod) {
-        this.workPeriod = workPeriod;
+    public void setWorkAdress(Adress workAdress) {
+        this.workAdress = workAdress;
+    }
+
+    public Set<String> getFavoritFoods() {
+        return favoritFoods;
+    }
+
+    public void setFavoritFoods(Set<String> favoritFoods) {
+        this.favoritFoods = favoritFoods;
     }
 
     public Adress getHomeAdress() {

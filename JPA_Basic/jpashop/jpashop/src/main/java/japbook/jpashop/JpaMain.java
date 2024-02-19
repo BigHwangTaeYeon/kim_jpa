@@ -18,16 +18,8 @@ public class JpaMain {
         // code
         try {
 
-            Order order = new Order();
-            em.persist(order);
-            // 양방향
-//            order.addOrderItem(new OrderItem());
 
-            // 단방향
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-
-            em.persist(orderItem);
+//            em.persist();
 
             tx.commit();
         } catch (Exception e) {

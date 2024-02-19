@@ -1,2 +1,15 @@
 
-L	java:S106"+Replace this use of System.out by a logger.(»½„Ÿşÿÿÿÿ8¤ÅÅ‘Û1
+Q
+java:S1481"/Remove this unused "resultList" local variable.(õµ‰³üÿÿÿÿ8¢Äã„Ü1
+L	java:S106 "+Replace this use of System.out by a logger.(»½„Ÿşÿÿÿÿ8şšØ„Ü1
+Q
+java:S1128"4Remove this unused import 'org.hibernate.Hibernate'.(óñ‹è8ÿšØ„Ü1
+c
+java:S1128"GRemove this unused import 'javax.persistence.criteria.CriteriaBuilder'.(É¿F8ÿšØ„Ü1
+g
+java:S1128"ERemove this unused import 'javax.persistence.criteria.CriteriaQuery'.(ıŞ§ÿÿÿÿÿ8ÿšØ„Ü1
+Y
+java:S1128"<Remove this unused import 'javax.persistence.criteria.Root'.(ùÆšğ8€›Ø„Ü1
+L
+java:S1128
+"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8€›Ø„Ü1
