@@ -19,13 +19,14 @@ public class JpaMain {
         // code
         try {
 
-            Member member = new Member();
-            member.setUserName("HHH");
-            em.persist(member);
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영환");
 
-            // 아직 SQL에 없음 flush를 해야함 / flush -> commit, query 날라갈 때 동작
+            em.persist(book);
 
-            List<Member> resultList = em.createNativeQuery("select * from member").getResultList();
+            em.createQuery("select i from Item i where type(i) = Book", Item.class)
+                    .getResultList();
 
             tx.commit();
         } catch (Exception e) {

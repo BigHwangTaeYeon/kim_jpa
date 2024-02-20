@@ -96,3 +96,5 @@ Y
 )src/main/java/hellojpa/AddressEntity.java,2\8\288dd2a061bd2aef4a50d3ec6f052bc0991950b2
 U
 %10.객체지향쿼리언어1(JPQL).md,0\0\0032daee4c86ddd54a151d9f1aee80b945ea9d2b
+U
+%11.객체지향쿼리언어2(JPQL).md,7\4\74ed573cc300291047356d492fe806c2fbe2338d
