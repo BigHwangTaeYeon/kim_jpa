@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d8154b5-2c8b-44f6-ab4a-2dbaed766249" name="Changes" comment="값타입 완료&#10;JPQL 시작">
-      <change afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/MemberDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/MemberType.java" afterDir="false" />
+    <list default="true" id="2d8154b5-2c8b-44f6-ab4a-2dbaed766249" name="Changes" comment="객체지향 쿼리 언어 1 완료">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10.객체지향쿼리언어1(JPQL).md" beforeDir="false" afterPath="$PROJECT_DIR$/10.객체지향쿼리언어1(JPQL).md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hellojpa/JpaMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hellojpa/JpaMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11.객체지향쿼리언어2(JPQL).md" beforeDir="false" afterPath="$PROJECT_DIR$/11.객체지향쿼리언어2(JPQL).md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/../jpql/src/main/java/hellojpa/jpql/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jpql/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../jpql/src/main/resources/META-INF/persistence.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708335644387</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="객체지향 쿼리 언어 1 완료">
+      <option name="closed" value="true" />
+      <created>1708431456094</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708431456094</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -140,6 +144,7 @@
     <MESSAGE value="프록시" />
     <MESSAGE value="불변 객체" />
     <MESSAGE value="값타입 완료&#10;JPQL 시작" />
-    <option name="LAST_COMMIT_MESSAGE" value="값타입 완료&#10;JPQL 시작" />
+    <MESSAGE value="객체지향 쿼리 언어 1 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="객체지향 쿼리 언어 1 완료" />
   </component>
 </project>
