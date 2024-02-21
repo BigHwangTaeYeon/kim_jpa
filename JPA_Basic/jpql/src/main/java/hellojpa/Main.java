@@ -18,24 +18,41 @@ public class Main {
         tx.begin();
         // code
         try {
+            Team teamA = new Team();
+            teamA.setName("teamA");
+            em.persist(teamA);
+
+            Team teamB = new Team();
+            teamB.setName("teamB");
+            em.persist(teamB);
+
+            Team teamC = new Team();
+            teamC.setName("teamC");
+            em.persist(teamC);
+
             Member member1 = new Member();
             member1.setUsername("member1");
+            member1.setTeam(teamA);
             em.persist(member1);
 
             Member member2 = new Member();
             member2.setUsername("member2");
+            member2.setTeam(teamA);
             em.persist(member2);
 
-            em.flush();
+            Member member3 = new Member();
+            member3.setUsername("member3");
+            member3.setTeam(teamB);
+            em.persist(member3);
+
+//            em.flush();
+//            em.clear();
+
+            int resultCount = em.createQuery("update Member m set m.age = 20")
+                    .executeUpdate();
             em.clear();
-
-            String query = "select group_concat(m.username) from Member m ";
-            List<String> result = em.createQuery(query, String.class)
-                    .getResultList();
-
-            for(String m : result) {
-                System.out.println("Objects = " + m);
-            }
+            Member findMember = em.find(Member.class, member1.getId());
+            System.out.println("findMember : " + findMember.getAge());
 
             tx.commit();
         } catch (Exception e) {
