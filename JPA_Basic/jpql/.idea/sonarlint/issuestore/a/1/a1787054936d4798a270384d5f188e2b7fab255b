@@ -1,0 +1,14 @@
+
+]	java:S1250"<This block of commented-out lines of code should be removed.(ô±¹Îüÿÿÿÿ8àè¯ÚÜ1
+R
+java:S14813"0Remove this unused "resultCount" local variable.(÷’ŒÑùÿÿÿÿ8­Ê®ÚÜ1
+G	java:S1067"+Replace this use of System.out by a logger.(«´µ8ß¯®ÚÜ1
+V
+java:S1128"4Remove this unused import 'hellojpa.jpql.MemberDTO'.(ƒ´øÿÿÿÿ8×‹¦ÚÜ1
+W
+java:S1128"5Remove this unused import 'hellojpa.jpql.MemberType'.(¨«É©üÿÿÿÿ8×‹¦ÚÜ1
+M
+java:S1128	"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8×‹¦ÚÜ1
+K
+java:S1128
+".Remove this unused import 'java.util.Objects'.(¼¸õ›8Ø‹¦ÚÜ1
