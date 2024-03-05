@@ -1,0 +1,24 @@
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:test;
+#    username: sa
+#    password: 1
+#    driver-class-name: org.h2.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+##        show_sql: true
+#        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    # 쿼리 파라미터가 ? 나오기만 했던것을 파라미터를 확인할 수 있다.
+#    binding parameter (1:VARCHAR) <- [memberA]
+#    binding parameter (2:BIGINT) <- [1]
+#    다른 방법으로는 라이브러리 사용, P6Spy
+
+# show_sql , org.hibernate.SQL
