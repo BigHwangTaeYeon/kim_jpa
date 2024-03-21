@@ -9,7 +9,7 @@
 5. OSIV와 성능 최적화</br>
     Open Session In View - 사용 안하면 LAZY Exception 을 자주 만나게 되는 상황
 
-### 지연로딩과 성능 최적화
+### 지연로딩과 성능 최적화 XToOne(OneToOne, ManyToOne)
 
 지연로딩으로 발생하는 성능 문제를 단계적으로 해결
 ****정말 중요한 부분 100% 이해 필요****
@@ -137,7 +137,65 @@ public class OrderSimpleApiContoller {
 
 
 
-### 컬렉션 조회 최적화
+### 컬렉션 조회 최적화 (OneToMany)
+일대다 관계를 조회하고 최적화하는 방법
+
+**fetch join 중복 제거**
+@GetMapping("/api/v3/orders")를 조회하면 데이터가 4개가 나간다.
+order 가 2개이고 orderItem 이 2개이기에 1:N 조건으로 총 4개의 데이터가 노출된다.
+아래와 같이 order 의 중복을 제거하는 것이 필요하다
+
+```java
+public List<Order> findAllWithItem() {
+    return em.createQuery("select distinct o from Order o " +
+                            "join fetch o.member m " +
+                            "join fetch o.delivery d " +
+                            "join fetch o.orderItems oi " +
+                            "join fetch oi.item i ", Order.class
+    ).getResultList();
+}
+```
+    select
+        distinct o1_0.order_id,
+        d1_0.delivery_id,
+        d1_0.city,
+        d1_0.street,
+        d1_0.zipcode,
+        d1_0.status,
+    ...
+
+distinct 를 사용하면 위와같이 select 구문이 나간다.
+실제 SQL 에서는 distinct 를 사용하면 모든 컬럼이 같은 행만 중복 제거 되지만 
+JPA 에서는 자체적으로 id 값이 같으면 중복 제거를 해준다.
+
+********하지만 페이징이 불가능하다********
+.setFirstResult(1)
+.setMaxResults(100)
+WARN HHH90003004: firstResult/maxResults specified with collection fetch; applying in memory
+
+쿼리를 보면 limit 또는 offset 이 없다.
+결론은 모든 데이터를 가져온 후 메모리에서 페이징을 해버린다.(굉장히 위험하다.)
+
+1:N 페치 조인에서는 페이징을 해서는 안된다.
+
+컬렉션 페치 조인은 1개만 사용할 수 있다.
+둘 이상의 페치조인을 사용하면 데이터가 부정합하게 조회될 수 있다.
+
+###### 결론
+
+1. 1:N 페치 조인에서는 페이징을 해서는 안된다.
+2. 컬렉션 페치 조인은 1개만 사용할 수 있다.
+
+
+
+### 페이징과 한계 돌파
+
+
+
+
+
+
+
 
 
 
