@@ -10,6 +10,7 @@ import jpabook.repository.order.query.OrderFlatDto;
 import jpabook.repository.order.query.OrderItemQueryDto;
 import jpabook.repository.order.query.OrderQueryDto;
 import jpabook.repository.order.query.OrderQueryRepository;
+import jpabook.service.OrderQueryService;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ import static java.util.stream.Collectors.*;
 public class OrderApiController {
     private final OrderRepository orderRepository;
     private final OrderQueryRepository orderQueryRepository;
+    private final OrderQueryService orderQueryService;
 
     /*
      * 컬렉션 노출
@@ -50,12 +52,12 @@ public class OrderApiController {
      * DTO 로 노출, 자그마치 11번 조회
      */
     @GetMapping("/api/v2/orders")
-    public List<OrderDto> ordersV2() {
-        List<Order> all = orderRepository.findAllString(new OrderSearch());
-        List<OrderDto> collect = all.stream()
-                .map(o -> new OrderDto(o))
-                .collect(toList());
-        return collect;
+    public List<OrderQueryService.OrderQueryDto> ordersV2() {
+//        List<Order> all = orderRepository.findAllString(new OrderSearch());
+//        List<OrderDto> collect = all.stream()
+//                .map(o -> new OrderDto(o))
+//                .collect(toList());
+        return orderQueryService.collectV2();
     }
 
     /*
