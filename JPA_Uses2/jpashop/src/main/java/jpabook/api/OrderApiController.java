@@ -9,6 +9,7 @@ import jpabook.repository.OrderSearch;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -57,9 +58,21 @@ public class OrderApiController {
     public List<OrderDto> ordersV3() {
         List<Order> all = orderRepository.findAllWithItem();
 
-        for (Order order : all) {
-            System.out.println("order ref = " + order + " id = " + order.getId());
-        }
+        List<OrderDto> collect = all.stream()
+                .map(o -> new OrderDto(o))
+                .collect(Collectors.toList());
+        return collect;
+    }
+
+    /*
+     * ToOne 관계 페치 조인, 페이징 처리
+     */
+    @GetMapping("/api/v3.1/orders")
+    public List<OrderDto> ordersV3_page(
+            @RequestParam(value = "offset", defaultValue = "0") int offset
+            , @RequestParam(value = "limit", defaultValue = "100") int limit
+    ) {
+        List<Order> all = orderRepository.findAllWithMemberDelivery(offset, limit);
 
         List<OrderDto> collect = all.stream()
                 .map(o -> new OrderDto(o))

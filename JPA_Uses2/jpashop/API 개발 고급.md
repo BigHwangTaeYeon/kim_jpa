@@ -189,6 +189,106 @@ WARN HHH90003004: firstResult/maxResults specified with collection fetch; applyi
 
 
 ### 페이징과 한계 돌파
+* 컬렉션을 페치 조인하면 페이징이 불가능하다.
+    order 를 기준으로 페이징 하려 하였지만 items 가 더 많기때문에 items 기준으로 데이터가 증가해서 orderItems 기준으로 페이징 되버린다.
+
+1. ToOne(OneToOne, ManyToOne) 관계를 모두 페치조인 한다. (ToOne 관계는 row 수를 증가시키지 않으므로 페이징 쿼리에 영향을 주지 않는다.)
+2. 컬렉션은 지연 로딩으로 조회한다.
+3. 지연 로딩 서능 최적화를 위해 hibernate.default_batch_fetch_size @BatchSize 를 적용한다.
+   1) hibernate.default_batch_fetch_size : 글로벌 설정
+   2) @BatchSize : 개별 최적화
+   3) 이 옵션을 사용하면 컬렉션이나, 프록시 객체를 한꺼번에 설정한 size 만큼 IN 쿼리로 조회한다.
+
+```java
+public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+    return em.createQuery(
+                "select o from Order o " +
+                        "join fetch o.member m " +
+                        "join fetch o.delivery d ", Order.class
+        )
+        .setFirstResult(offset)
+        .setMaxResults(limit)
+        .getResultList();
+}
+```
+ToOne(OneToOne, ManyToOne) 관계를 모두 페치조인 한다.
+
+```yaml
+spring:
+  jpa:
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+```
+where
+    oi1_0.order_id in (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ...
+where
+    i1_0.item_id in (?, ? ...
+in query 의 개수를 정해준다.
+
+중요한 것은 orderItem 이나 item 이 2개이기에 쿼리가 두번씩 실행됬지만,
+in 을 사용함으로 한번의 쿼리를 사용하여 모두 가져온다.
+("select o from Order o "만으로도 가능하지만 ToOne 관계의 member, delivery 쿼리를 실행하기 때문에 네트워크를 더 많이 타게 된다.)
+
+기존 v3 에서는 한번의 쿼리로 모두 가져왔지만 중복 데이터가 많다.
+v3.1에서는 정규화된 데이터로 중복이 없다.
+정확하게 필요한 데이터만 정리해서 가져오게 된다.
+
+데이터를 천개로 생각해본다면 네트워크를 호출하는 회수와 전송하는 사이에서 트레이드 오프가 있다/
+적은 개수의 데이터라면 한방 쿼리가 낫지만 많으면 이것이 더 성능이 좋을 수 있다.
+사실 상황에 많이 차이가 나게 된다.
+영환님은 이 방법을 추천하는 편이다.
+
+장점
+    N+1 에서 1+1 로 최적화
+    조인보다 DB 데이터 전송량이 최적화(정규화)
+    호출 수는 증가해도 DB 데이터 전송량이 감소
+    컬렉션 페치 조인은 페이징이 불가능 하지만 이 방법은 페이징이 가능하다.
+결론
+    ToOne 관계는 페치 조인하고 나머지는 batch size 로 최적화
+
+이정도만 하더라도 충분한 성능 최적화가 된다
+이 이상은 redis 를 사용하던지 다른 기술로 대체되는 정도이다.
+
+
+
+##### Batch Size
+yml 에서 글로벌 설정도 가능하지만 엔티티에 안에서 적용도 가능하다.
+
+컬렉션이 아닌 것.
+```java
+//@BatchSize(size = 100)
+@Entity
+@Getter
+@Setter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)   // 한 테이블에 다 상속된 엔티티객체가 모두 있다. 객체로써 나누어 다루는 것
+@DiscriminatorColumn(name = "dtype")
+public abstract class Item {}
+```
+
+컬렉션
+```java
+public class Order {
+    @BatchSize(size = 100)
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> orderItems = new ArrayList<>();
+}
+```
+
+미니멈은 없지만 멕시멈은 천개로 되어있다.
+100 ~ 1000 사이로 권장
+데이터베이스에 따라 제한을 두기도 하기에 확인이 필요
+
+천개로 잡으면 순간적으로 DB에서 애플리케이션에 불러오기에 DB에 순간 부하가 증가할 수 있다.
+하지만 100이든 1000이든 결국 전체 데이터를 로딩해야 하므로 메모리 사용량이 같다.
+
+WAS DB 순간부하에 부담이 되면 100씩, 괜찮으면 1000 두어도 좋다.
+
+
+
+
+
+
 
 
 
